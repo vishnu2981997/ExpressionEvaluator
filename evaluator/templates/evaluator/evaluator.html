@@ -24,8 +24,8 @@
         <form method="POST" action="{% url 'evaluator' %}">
             {% csrf_token %}
             <div class="form-group pb-5">
-                <textarea class="form-control" rows="1" name="expression"
-                          placeholder="Enter A Valid Mathematical Expression To Evaluate It" required></textarea>
+                <textarea class="form-control" rows="2" name="expression"
+                          placeholder="Enter A Valid Mathematical Expression To Evaluate It (eg : 1+2)" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary btn-block pt-3 pb-3">Lets Evaluate</button>
         </form>
