@@ -1,0 +1,35 @@
+{% extends 'evaluator/base.html' %}
+
+{% block content%}
+
+<div class="container bg-white pt-5">
+    {% if data %}
+    <div class="jumbotron bg-white shadow">
+        <h1 class="display-4 text-center pb-5">Evaluator</h1>
+        <h5>Expression</h5>
+        {{ data.1 }}
+        <br/>
+        <h5>Answer</h5>
+        {{ data.0 }}
+        <br/>
+        <br/>
+        <form action="{% url 'evaluator' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary btn-block pt-3 pb-3">Back</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="jumbotron bg-white shadow">
+        <h1 class="display-4 text-center pb-5">Evaluator</h1>
+        <form method="POST" action="{% url 'evaluator' %}">
+            {% csrf_token %}
+            <div class="form-group pb-5">
+                <textarea class="form-control" rows="1" name="expression"
+                          placeholder="Enter A Valid Mathematical Expression To Evaluate It" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block pt-3 pb-3">Lets Evaluate</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

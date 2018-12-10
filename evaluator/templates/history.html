@@ -1,0 +1,31 @@
+{% extends 'evaluator/base.html' %}
+
+{% block content%}
+<div class="jumbotron bg-white shadow">
+    <h1 class="display-4 text-center pb-5">History</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">Expression</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <th scope="row">{{ i.id }}</th>
+            <td>{{ i.expression }}</td>
+            <td>{{ i.ans }}</td>
+            <td>{{ i.pub_date }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <form action="{% url 'home' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-block pt-3 pb-3">Back to Home</button>
+    </form>
+</div>
+{% endblock %}
